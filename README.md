@@ -1,6 +1,6 @@
-# 🚙 AluCar - Sistema de Aluguel de Veículos
+# AluCar - Sistema de Aluguel de Veículos
 
-## 👥 Colaboradores
+## Colaboradores
 
 - **Marcos Fernandes** 
 - **Nicolas Alves** 
