@@ -4,6 +4,7 @@ O AluCar é um sistema completo para gerenciamento de locação de veículos, pe
 Desenvolvido para otimizar o fluxo de locadoras e garantir maior controle sobre a frota.
 
 | Colaboradores |
+| --- | | --- |
 | Carlos Eduardo Santos Campos | 
 | Hudson de Jesus |                   
 | Marcos Vinicius Arouxa Fernandes |
