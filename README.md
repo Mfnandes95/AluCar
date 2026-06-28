@@ -1,13 +1,14 @@
 AluCar - Sistema de Agendamento e Locação de Veículos
+
 O AluCar é um sistema completo para gerenciamento de locação de veículos, permitindo agendamentos, reservas, devoluções e inspeções veiculares. 
 Desenvolvido para otimizar o fluxo de locadoras e garantir maior controle sobre a frota.
 
-Colaboradores
-Carlos Eduardo Santos Campos
-Hudson de Jesus
-Marcos Vinicius Arouxa Fernandes
-Nicolas Alves de Oliveira
-Willison Santos
+| Colaboradores |
+| Carlos Eduardo Santos Campos | 
+| Hudson de Jesus |                   
+| Marcos Vinicius Arouxa Fernandes |
+| Nicolas Alves de Oliveira |
+| Willison Santos |
 
 Requisitos Funcionais
 
