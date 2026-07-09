@@ -10,9 +10,10 @@ public interface UsuarioService {
     Usuario cadastroUsuario(Usuario usuario);
     Usuario buscarUsuarioPorId(Long id);
     Usuario buscarUsuarioPorEmail(String email);
+    Usuario atualizarUsuario(Long id, Usuario usuario);
+    void excluir(Long id);
 
     Page<Usuario> listarUsuarios(int pagina, int tamanho);
-    void atualizarUsuario(Long id, Usuario usuario);
     void excluirUsuario(Long id);
 
     Optional<Usuario> buscarUsuarioPorIdOptional(Long id);

@@ -1,6 +1,7 @@
-package com.alucar.domain.model;
+package com.alucar.application.dto.response;
 
-public class Carro {
+public class CarroResponseDTO {
+    
     private Long id;
     private String modelo;
     private String marca;
@@ -26,7 +27,7 @@ public class Carro {
     }
     public String getMarca() {
         return marca;
-    }
+    }   
     public void setMarca(String marca) {
         this.marca = marca;
     }
@@ -35,18 +36,6 @@ public class Carro {
     }
     public void setAno(String ano) {
         this.ano = ano;
-    }
-    public String getCor() {
-        return cor;
-    }
-    public void setCor(String cor) {
-        this.cor = cor;
-    }
-    public String getPlaca() {
-        return placa;
-    }
-    public void setPlaca(String placa) {
-        this.placa = placa;
     }
     public String getTipoCombustivel() {
         return tipoCombustivel;
@@ -60,23 +49,22 @@ public class Carro {
     public void setQuilometragem(String quilometragem) {
         this.quilometragem = quilometragem;
     }
+    public String getCor() {
+        return cor;
+    }
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+    public String getPlaca() {
+        return placa;
+    }
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
     public Double getValorDiaria() {
         return valorDiaria;
     }
     public void setValorDiaria(Double valorDiaria) {
         this.valorDiaria = valorDiaria;
     }
-}   
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
