@@ -14,7 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 import com.alucar.application.dto.response.ColaboradorResponseDTO;
@@ -35,10 +35,10 @@ public class ColaboradorController {
     }
 
     @PostMapping
-    public ResponseEntity<ColaboradorResponseDTO> cadastrarColaborador(@Valid @RequestBody ColaboradorResponseDTO colaboradorResponseDTO) {
+    public ResponseEntity<ColaboradorResponseDTO> criarColaborador(@Valid @RequestBody ColaboradorResponseDTO colaboradorResponseDTO) {
         Colaborador colaborador = colaboradorMapper.toEntity(colaboradorResponseDTO);
-        Colaborador colaboradorCadastrado = colaboradorService.cadastrarColaborador(colaborador);
-        ColaboradorResponseDTO colaboradorResponseDTOCadastrado = colaboradorMapper.toResponseDTO(colaboradorCadastrado);
+        Colaborador colaboradorCadastrado = colaboradorService.criarColaborador(colaborador);
+        ColaboradorResponseDTO colaboradorResponseDTOCadastrado = colaboradorMapper.toDTO(colaboradorCadastrado);
         return ResponseEntity.status(HttpStatus.CREATED).body(colaboradorResponseDTOCadastrado);
     }  
 
@@ -62,7 +62,7 @@ public class ColaboradorController {
         Pageable pageable = PageRequest.of(pagina, tamanho);
         Page<Colaborador> colaboradoresDisponiveis = colaboradorService.getColaboradoresDisponiveis(pageable);
         List<ColaboradorResponseDTO> colaboradoresDisponiveisDTO = colaboradoresDisponiveis.stream()    
-                .map(colaboradorMapper::toResponseDTO)
+                .map(colaboradorMapper::toDTO)
                 .collect(Collectors.toList());
         return ResponseEntity.ok(colaboradoresDisponiveisDTO);
             }
