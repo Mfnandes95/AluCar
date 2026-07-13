@@ -30,20 +30,30 @@
       </a>
     </div>
 
-    <!-- 2. Links Desktop (Centro - Exatamente no meio) -->
+    <!-- 2. Links Desktop (Centro) -->
     <nav class="hidden md:flex items-center justify-center gap-6 lg:gap-8 text-sm font-medium">
-      <!-- Exemplo de Link com animação de Underline -->
       <a href="#inicio" class="relative text-white/80 hover:text-white py-1 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">Início</a>
       
       <a href="#como-alugar" class="relative text-white/80 hover:text-white py-1 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">Como alugar</a>
       
       <a href="#vantagens" class="relative text-white/80 hover:text-white py-1 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">Vantagens</a>
       
-      <!-- Dropdown Frota -->
-      <a href="#frota" class="group relative text-white/80 hover:text-white py-1 flex items-center gap-1 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">
-        Frota
-        <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-      </a>
+      <!-- DROPDOWN FROTA NO DESKTOP (AQUI ENTROU A MUDANÇA) -->
+      <div class="relative group">
+        <button class="relative text-white/80 hover:text-white py-1 flex items-center gap-1 transition-colors duration-300 focus:outline-none after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 group-hover:after:w-full">
+          Frota
+          <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+
+        <!-- Submenu Suspenso (Aparece ao passar o mouse) -->
+        <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-41 bg-[#0A2263] border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 -translate-y-2 z-50 overflow-hidden py-1">
+          <a href="#veiculos" class="block px-4 py-2.5 text-xs text-white/80 hover:text-white hover:bg-blue-600/50 transition-colors flex items-center gap-2">
+            <span>Ver veículos disponíveis</span>
+          </a>
+        </div>
+      </div>
       
       <a href="#retirada" class="relative text-white/80 hover:text-white py-1 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">Retirada</a>
       
@@ -54,7 +64,6 @@
     <div class="hidden md:flex items-center justify-end">
       <a href="#reservar" class="relative group overflow-hidden rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/35 active:translate-y-0">
         <span class="relative z-10">Reservar agora</span>
-        <!-- Efeito de brilho ao passar o mouse -->
         <span class="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
       </a>
     </div>
@@ -70,16 +79,21 @@
 
   </div>
 
-  <!-- Menu Mobile Dropdown (Escondido por padrão) -->
+  <!-- Menu Mobile Dropdown (AQUI TAMBÉM ENTROU A MUDANÇA) -->
   <div id="mobile-menu" class="hidden md:hidden bg-[#0A2263] border-t border-white/10 px-6 py-5 transition-all duration-300">
     <nav class="flex flex-col gap-4 text-base font-medium">
       <a href="#inicio" class="text-white/80 hover:text-white transition-colors py-1">Início</a>
       <a href="#como-alugar" class="text-white/80 hover:text-white transition-colors py-1">Como alugar</a>
       <a href="#vantagens" class="text-white/80 hover:text-white transition-colors py-1">Vantagens</a>
-      <a href="#frota" class="text-white/80 hover:text-white transition-colors py-1 flex items-center justify-between">
-        Frota
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-      </a>
+      
+      <!-- Opção de Frota no Mobile com Subitem -->
+      <div class="flex flex-col gap-1.5 py-1">
+        <span class="text-white/80 text-base font-medium">Frota</span>
+        <a href="#veiculos" class="text-blue-300 hover:text-white transition-colors py-1 pl-3 border-l-2 border-blue-400 text-sm flex items-center gap-2">
+          <span>Ver veículos disponíveis</span> 
+        </a>
+      </div>
+
       <a href="#retirada" class="text-white/80 hover:text-white transition-colors py-1">Retirada</a>
       <a href="#faq" class="text-white/80 hover:text-white transition-colors py-1">FAQ</a>
       
