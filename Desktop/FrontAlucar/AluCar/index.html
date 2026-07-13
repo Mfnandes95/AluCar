@@ -23,14 +23,14 @@
 <header class="bg-[#0D2B7A] text-white sticky top-0 z-50 shadow-lg border-b border-white/10 backdrop-blur-md">
   <div class="w-full px-6 lg:px-12 py-3.5 grid grid-cols-2 md:grid-cols-3 items-center">
     
-    <!-- 1. Logo (Esquerda) -->
+    <!-- 1. Logo-->
     <div class="flex items-center justify-start">
       <a href="#" class="transition-transform duration-300 hover:scale-105">
         <img src="public/LogoAluCar.png" alt="Logo AluCar" class="h-18 w-auto lg:h-16 w-auto object-contain" />
       </a>
     </div>
 
-    <!-- 2. Links Desktop (Centro) -->
+    <!-- 2. Links Desktop-->
     <nav class="hidden md:flex items-center justify-center gap-6 lg:gap-8 text-sm font-medium">
       <a href="#inicio" class="relative text-white/80 hover:text-white py-1 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">Início</a>
       
@@ -38,7 +38,7 @@
       
       <a href="#vantagens" class="relative text-white/80 hover:text-white py-1 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">Vantagens</a>
       
-      <!-- DROPDOWN FROTA NO DESKTOP (AQUI ENTROU A MUDANÇA) -->
+      <!-- DROPDOWN FROTA NO DESKTOP -->
       <div class="relative group">
         <button class="relative text-white/80 hover:text-white py-1 flex items-center gap-1 transition-colors duration-300 focus:outline-none after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 group-hover:after:w-full">
           Frota
@@ -47,7 +47,7 @@
           </svg>
         </button>
 
-        <!-- Submenu Suspenso (Aparece ao passar o mouse) -->
+        <!-- Submenu Suspenso -->
         <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-41 bg-[#0A2263] border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 -translate-y-2 z-50 overflow-hidden py-1">
           <a href="#veiculos" class="block px-4 py-2.5 text-xs text-white/80 hover:text-white hover:bg-blue-600/50 transition-colors flex items-center gap-2">
             <span>Ver veículos disponíveis</span>
@@ -60,7 +60,7 @@
       <a href="#faq" class="relative text-white/80 hover:text-white py-1 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">FAQ</a>
     </nav>
 
-    <!-- 3. Botão Desktop (Direita) -->
+    <!-- 3. Botão Desktop -->
     <div class="hidden md:flex items-center justify-end">
       <a href="#reservar" class="relative group overflow-hidden rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/35 active:translate-y-0">
         <span class="relative z-10">Reservar agora</span>
@@ -79,7 +79,7 @@
 
   </div>
 
-  <!-- Menu Mobile Dropdown (AQUI TAMBÉM ENTROU A MUDANÇA) -->
+  <!-- Menu Mobile Dropdown -->
   <div id="mobile-menu" class="hidden md:hidden bg-[#0A2263] border-t border-white/10 px-6 py-5 transition-all duration-300">
     <nav class="flex flex-col gap-4 text-base font-medium">
       <a href="#inicio" class="text-white/80 hover:text-white transition-colors py-1">Início</a>
@@ -137,6 +137,229 @@
         alt="Entrega das chaves do veículo AluCar" 
         class="w-full max-w-xs sm:max-w-md lg:max-w-none h-auto object-contain drop-shadow-sm"
       />
+    </div>
+
+  </div>
+</section>
+
+<section id="como-alugar" class="bg-white py-12 lg:py-20 border-t border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    
+    <!-- Título com linha separadora -->
+    <div class="mb-12 border-b border-gray-200 pb-4">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 tracking-tight">
+        Como alugar na AluCar?
+      </h2>
+    </div>
+
+    <!-- Grid dos 3 Passos -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+      
+      <!-- Passo 1 -->
+      <div class="flex flex-col items-start">
+        
+       <div class="mb-4 text-black">
+  <svg class="w-12 h-12" viewBox="0 0 24 24" fill="currentColor">
+   
+    <path d="M19 1l.8 1.8L21.6 3.6l-1.8.8L19 6.2l-.8-1.8-1.8-.8 1.8-.8z"/>
+    
+    <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-1.08-5.99zM6.85 7h10.29l1.08 6H5.77l1.08-6zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+  </svg>
+</div>
+        
+        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+          Escolha seu Veículo
+        </h3>
+        
+        <p class="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 flex-1">
+          Navegue pela nossa frota de veículos disponíveis, selecione o modelo ideal para a sua necessidade e clique em reservar para iniciar o processo.
+        </p>
+        
+        <a href="#veiculos" class="text-blue-600 hover:text-blue-700 font-semibold text-sm hover:underline inline-flex items-center gap-1 transition-colors">
+          Ver Carros Disponíveis
+        </a>
+      </div>
+
+      <!-- Passo 2 -->
+      <div class="flex flex-col items-start">
+        <div class="mb-4 text-black">
+          <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+          </svg>
+        </div>
+
+        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+          Confirme Seus Dados
+        </h3>
+
+        <p class="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 flex-1">
+          Faça login na sua conta, preencha as informações necessárias do condutor e selecione o período do aluguel de forma rápida e segura.
+        </p>
+
+        <a href="#login" class="text-blue-600 hover:text-blue-700 font-semibold text-sm hover:underline inline-flex items-center gap-1 transition-colors">
+          Criar conta ou Entrar
+        </a>
+      </div>
+
+      <!-- Passo 3 -->
+      <div class="flex flex-col items-start">
+        <div class="mb-4 text-black">
+          <svg class="w-12 h-11" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 0121 9z" />
+          </svg>
+        </div>
+
+        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+          Solicite a Retirada
+        </h3>
+
+        <p class="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 flex-1">
+          Finalize o seu pedido escolhendo o ponto de retirada mais próximo. Pronto! É só ir buscar o veículo na data agendada e aproveitar.
+        </p>
+
+        <a href="#lojas" class="text-blue-600 hover:text-blue-700 font-semibold text-sm hover:underline inline-flex items-center gap-1 transition-colors">
+          Encontrar lojas AluCar
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Seção Banner Slider -->
+<section class="bg-gray-50 py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    <div class="relative overflow-hidden rounded-2xl shadow-xl bg-[#031A62]">
+      
+      <!-- Container dos Slides -->
+      <div id="slider-container" class="flex transition-transform duration-700 ease-in-out w-full">
+        
+        <!-- Slide 1 -->
+        <div class="min-w-full flex-shrink-0 grid grid-cols-1 md:grid-cols-2 items-center p-6 sm:p-10 lg:p-12 gap-6 min-h-[320px]">
+          <div class="flex flex-col justify-center space-y-3 text-white z-10">
+            <!-- Logo sutil no topo do card -->
+            <img src="public/LogoAluCar.png" alt="AluCar" class="h-16 w-auto self-start opacity-90 object-contain" />
+            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight leading-tight">
+              ALUGUE EM SEGUNDOS, <br />
+              <span class="text-blue-400">APROVEITE CADA KM</span>
+            </h3>
+            <p class="text-sm sm:text-base text-gray-300">
+              A evolução digital no seu jeito de se mover.
+            </p>
+          </div>
+          <div class="flex justify-center items-center">
+            <!-- Substitua pelo caminho da imagem do carro 1 -->
+            <img src="src/assets/hb20.png" alt="Veículo AluCar 1" class="max-h-64 w-auto object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-105" />
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="min-w-full flex-shrink-0 grid grid-cols-1 md:grid-cols-2 items-center p-6 sm:p-10 lg:p-12 gap-6 min-h-[320px]">
+          <div class="flex justify-center items-center order-2 md:order-1">
+            <!-- Substitua pelo caminho da imagem do carro 2 -->
+            <img src="src/assets/gol.png" alt="Veículo AluCar 2" class="max-h-64 w-auto object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-105" />
+          </div>
+          <div class="flex flex-col justify-center space-y-3 text-white z-10 order-1 md:order-2">
+            <img src="public/LogoAluCar.png" alt="AluCar" class="h-16 w-auto self-start opacity-90 object-contain" />
+            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight leading-tight">
+              SUA JORNADA COMEÇA <br />
+              COM A <span class="text-blue-400">CHAVE CERTA</span>
+            </h3>
+            <p class="text-sm sm:text-base text-gray-300">
+              Sua única preocupação será escolher o próximo destino.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Indicadores do Slider (Bullets no rodapé) -->
+      <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        <button id="dot-0" onclick="goToSlide(0)" class="w-8 h-1.5 rounded-full bg-white transition-all duration-300" aria-label="Slide 1"></button>
+        <button id="dot-1" onclick="goToSlide(1)" class="w-8 h-1.5 rounded-full bg-white/40 transition-all duration-300" aria-label="Slide 2"></button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Seção Vantagens -->
+<section id="vantagens" class="bg-white py-16 lg:py-24 border-t border-gray-100">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Cabeçalho Centralizado -->
+    <div class="text-center mb-12 sm:mb-16">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-blue-600 tracking-tight mb-2">
+        Vantagens
+      </h2>
+      <p class="text-lg sm:text-xl text-gray-500 font-medium">
+        Por que escolher a AluCar?
+      </p>
+    </div>
+
+    <!-- Grid de Cards (1 coluna no mobile, 2 no desktop) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+      
+      <!-- Card 1: Km Livre -->
+      <div class="bg-white border border-gray-200 rounded-xl p-8 sm:p-10 text-center flex flex-col items-center shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300">
+        <div class="mb-5 text-black">
+          <svg class="w-14 h-14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+          Km Livre de Verdade
+        </h3>
+        <p class="text-sm sm:text-base text-gray-500 leading-relaxed max-w-sm">
+          Viaje para onde quiser e aproveite o caminho sem ficar se preocupando com o odômetro ou taxas extras no final.
+        </p>
+      </div>
+
+      <!-- Card 2: Flexibilidade Total -->
+      <div class="bg-white border border-gray-200 rounded-xl p-8 sm:p-10 text-center flex flex-col items-center shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300">
+        <div class="mb-5 text-black">
+          <svg class="w-14 h-14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2zM10 14l4 4m0-4l-4 4" />
+          </svg>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+          Flexibilidade Total
+        </h3>
+        <p class="text-sm sm:text-base text-gray-500 leading-relaxed max-w-sm">
+          Teve um imprevisto? Cancele ou altere a sua reserva gratuitamente em até 24 horas antes do horário de retirada.
+        </p>
+      </div>
+
+      <!-- Card 3: Assistência 24h -->
+      <div class="bg-white border border-gray-200 rounded-xl p-8 sm:p-10 text-center flex flex-col items-center shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300">
+        <div class="mb-5 text-black">
+          <svg class="w-14 h-14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+          Assistência 24h
+        </h3>
+        <p class="text-sm sm:text-base text-gray-500 leading-relaxed max-w-sm">
+          Nosso time está de plantão dia e noite para garantir a sua segurança. Deu qualquer problema? É só acionar pelo app.
+        </p>
+      </div>
+
+      <!-- Card 4: Segurança Máxima -->
+      <div class="bg-white border border-gray-200 rounded-xl p-8 sm:p-10 text-center flex flex-col items-center shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300">
+        <div class="mb-5 text-black">
+          <svg class="w-14 h-14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+          Segurança Máxima
+        </h3>
+        <p class="text-sm sm:text-base text-gray-500 leading-relaxed max-w-sm">
+          Todos os nossos veículos passam por uma inspeção rigorosa antes de cada entrega para você rodar com tranquilidade.
+        </p>
+      </div>
+
     </div>
 
   </div>
