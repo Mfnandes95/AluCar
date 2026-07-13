@@ -15,17 +15,26 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.beans.factory.annotation.Value;
+import java.util.List;
+
+import com.alucar.infrastructure.security.JwtAuthenticatorFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Value("${app.cors.allowed-origins}")
+    private String allowedOrigins;
+
     private final UserDetailsService userDetailsService;
-    private final OncePerRequestFilter jwtAuthenticationFilter;
+    private final JwtAuthenticatorFilter jwtAuthenticationFilter;
 
     public SecurityConfig(ObjectProvider<UserDetailsService> userDetailsServiceProvider,
-                          ObjectProvider<OncePerRequestFilter> jwtAuthenticationFilterProvider) {
+                          ObjectProvider<JwtAuthenticatorFilter> jwtAuthenticationFilterProvider) {
         this.userDetailsService = userDetailsServiceProvider.getIfAvailable();
         this.jwtAuthenticationFilter = jwtAuthenticationFilterProvider.getIfAvailable();
     }
@@ -33,6 +42,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+            .cors(cors -> cors.configurationSource(corsConfigurationSource())) // <--- ESSA LINHA É OBRIGATÓRIA
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
@@ -68,5 +78,20 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+    CorsConfiguration configuration = new CorsConfiguration();
+    
+    configuration.setAllowedOrigins(List.of(allowedOrigins.split(",")));
+    
+    configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+    configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept"));
+    configuration.setAllowCredentials(true);
+    
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    source.registerCorsConfiguration("/**", configuration);
+    return source;
     }
 }

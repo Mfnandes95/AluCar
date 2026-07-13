@@ -24,18 +24,17 @@ public class UsuarioMapper {
     }
 
     public UsuarioResponseDTO toDTO(Usuario usuario) {
-        if (usuario == null) {
-            return null;
-        }
-        UsuarioResponseDTO usuarioDTO = new UsuarioResponseDTO();
-        usuarioDTO.setId(usuario.getId());
-        usuarioDTO.setNome(usuario.getNome());
-        usuarioDTO.setEmail(usuario.getEmail());
-        usuarioDTO.setSenha(usuario.getSenha());
-        usuarioDTO.setTelefone(usuario.getTelefone());
-        usuarioDTO.setEndereco(usuario.getEndereco());
-        usuarioDTO.setCpf(usuario.getCpf());
-        usuarioDTO.setCnh(usuario.getCnh());
-        return usuarioDTO;
+        if (usuario == null) return null;
+        
+        return UsuarioResponseDTO.builder()
+                .id(usuario.getId())
+                .nome(usuario.getNome())
+                .email(usuario.getEmail())
+                .senha(usuario.getSenha())
+                .telefone(usuario.getTelefone())
+                .endereco(usuario.getEndereco())
+                .cpf(usuario.getCpf())
+                .cnh(usuario.getCnh())
+                .build();
     }
 }

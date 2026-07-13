@@ -4,7 +4,9 @@ import com.alucar.domain.model.Usuario;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface UsuarioService {
     
     Usuario cadastroUsuario(Usuario usuario);
