@@ -20,42 +20,116 @@
 
     <body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
-  <!-- Header / Navbar -->
-  <header class="bg-[#0D2B7A] text-white sticky top-0 z-50 shadow-md">
-  <!-- Trocamos o max-w por w-full e usamos px-8 ou px-12 para dar respiro nas bordas -->
-  <div class="w-full px-8 py-3 grid grid-cols-3 items-center">
+<header class="bg-[#0D2B7A] text-white sticky top-0 z-50 shadow-lg border-b border-white/10 backdrop-blur-md">
+  <div class="w-full px-6 lg:px-12 py-3.5 grid grid-cols-2 md:grid-cols-3 items-center">
     
-    <!-- 1. Esquerda: Logo (alinhada à esquerda) -->
+    <!-- 1. Logo (Esquerda) -->
     <div class="flex items-center justify-start">
-      <a href="#">
-        <img src="public/LogoAluCar.png" alt="Logo AluCar" class="h-18 w-auto"/>
+      <a href="#" class="transition-transform duration-300 hover:scale-105">
+        <img src="public/LogoAluCar.png" alt="Logo AluCar" class="h-18 w-auto lg:h-16 w-auto object-contain" />
       </a>
     </div>
 
-    <!-- 2. Centro: Links (centralizados na tela inteira) -->
-    <nav class="hidden md:flex items-center justify-center gap-8 text-sm font-medium text-blue-100">
-      <a href="#inicio" class="hover:text-white transition-colors">Início</a>
-      <a href="#como-alugar" class="hover:text-white transition-colors">Como alugar</a>
-      <a href="#vantagens" class="hover:text-white transition-colors">Vantagens</a>
-      <a href="#frota" class="flex items-center gap-1 hover:text-white transition-colors">
+    <!-- 2. Links Desktop (Centro - Exatamente no meio) -->
+    <nav class="hidden md:flex items-center justify-center gap-6 lg:gap-8 text-sm font-medium">
+      <!-- Exemplo de Link com animação de Underline -->
+      <a href="#inicio" class="relative text-white/80 hover:text-white py-1 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">Início</a>
+      
+      <a href="#como-alugar" class="relative text-white/80 hover:text-white py-1 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">Como alugar</a>
+      
+      <a href="#vantagens" class="relative text-white/80 hover:text-white py-1 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">Vantagens</a>
+      
+      <!-- Dropdown Frota -->
+      <a href="#frota" class="group relative text-white/80 hover:text-white py-1 flex items-center gap-1 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">
         Frota
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
       </a>
-      <a href="#retirada" class="hover:text-white transition-colors">Retirada</a>
-      <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+      
+      <a href="#retirada" class="relative text-white/80 hover:text-white py-1 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">Retirada</a>
+      
+      <a href="#faq" class="relative text-white/80 hover:text-white py-1 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">FAQ</a>
     </nav>
 
-    <!-- 3. Direita: Botão (alinhado à direita) -->
-    <div class="flex items-center justify-end">
-      <a href="#reservar" class="bg-[#1D4ED8] hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-all shadow">
-        Reservar agora
+    <!-- 3. Botão Desktop (Direita) -->
+    <div class="hidden md:flex items-center justify-end">
+      <a href="#reservar" class="relative group overflow-hidden rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/35 active:translate-y-0">
+        <span class="relative z-10">Reservar agora</span>
+        <!-- Efeito de brilho ao passar o mouse -->
+        <span class="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
       </a>
+    </div>
+
+    <!-- Botão Hamburguer (Apenas Mobile) -->
+    <div class="flex md:hidden justify-end">
+      <button id="menu-btn" class="text-white focus:outline-none p-2 rounded-lg hover:bg-white/10 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
 
   </div>
+
+  <!-- Menu Mobile Dropdown (Escondido por padrão) -->
+  <div id="mobile-menu" class="hidden md:hidden bg-[#0A2263] border-t border-white/10 px-6 py-5 transition-all duration-300">
+    <nav class="flex flex-col gap-4 text-base font-medium">
+      <a href="#inicio" class="text-white/80 hover:text-white transition-colors py-1">Início</a>
+      <a href="#como-alugar" class="text-white/80 hover:text-white transition-colors py-1">Como alugar</a>
+      <a href="#vantagens" class="text-white/80 hover:text-white transition-colors py-1">Vantagens</a>
+      <a href="#frota" class="text-white/80 hover:text-white transition-colors py-1 flex items-center justify-between">
+        Frota
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </a>
+      <a href="#retirada" class="text-white/80 hover:text-white transition-colors py-1">Retirada</a>
+      <a href="#faq" class="text-white/80 hover:text-white transition-colors py-1">FAQ</a>
+      
+      <div class="pt-3 border-t border-white/10">
+        <a href="#reservar" class="block w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-lg shadow transition-colors">
+          Reservar agora
+        </a>
+      </div>
+    </nav>
+  </div>
 </header>
+
+<!-- Seção de Hero + CTA -->
+<section class="relative bg-white py-8 sm:py-12 lg:py-20 overflow-hidden">
+  <!-- Container principal com padding responsivo e grid adaptável -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+    
+    <!-- Coluna de Conteúdo (Texto + Botão) -->
+    <div class="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
+      
+      <!-- Título responsivo -->
+      <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight tracking-tight mb-4">
+        O carro ideal para cada momento
+      </h1>
+      
+      <!-- Parágrafo adaptável -->
+      <p class="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed mb-6 sm:mb-8 max-w-xl">
+        Encontre veículos revisados, com quilometragem livre e o conforto que você merece para pegar a estrada sem preocupações.
+      </p>
+
+      <!-- Botão que vira 'full-width' no mobile -->
+      <a href="#frota" class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0">
+        Escolher meu carro
+      </a>
+    </div>
+
+    <!-- Coluna de Imagem -->
+    <div class="flex items-center justify-center order-1 lg:order-2">
+      <img 
+        src="/src/assets/HeroAluCar.png"
+        alt="Entrega das chaves do veículo AluCar" 
+        class="w-full max-w-xs sm:max-w-md lg:max-w-none h-auto object-contain drop-shadow-sm"
+      />
+    </div>
+
+  </div>
+</section>
 
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
+    
   </body>
 </html>
