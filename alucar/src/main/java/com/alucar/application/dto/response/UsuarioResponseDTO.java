@@ -20,4 +20,3 @@ public class UsuarioResponseDTO {
     private String cpf;
     private String cnh;
 }
-
