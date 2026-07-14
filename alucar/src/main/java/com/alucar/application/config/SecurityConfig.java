@@ -50,7 +50,8 @@ public class SecurityConfig {
                     "/v3/api-docs/**",
                     "/swagger-ui/**",
                     "/v3/api-docs/swagger-config",
-                    "/swagger-ui.html"
+                    "/swagger-ui.html",
+                    "/carros/**"
                 ).permitAll()
                 .anyRequest().permitAll()
             )
@@ -61,7 +62,6 @@ public class SecurityConfig {
             authProvider.setPasswordEncoder(passwordEncoder());
             http.authenticationProvider(authProvider);
         }
-
         if (jwtAuthenticationFilter != null) {
             http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         } else {
@@ -85,8 +85,12 @@ public class SecurityConfig {
 public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
 
-    // Substitua a linha da variável por esta linha fixa para testar:
-    configuration.setAllowedOriginPatterns(List.of("https://meudominio.com", "http://localhost:3000"));
+    // Adicionada a porta 5173 para permitir a comunicação com o Vite
+    configuration.setAllowedOriginPatterns(List.of(
+        "https://meudominio.com", 
+        "http://localhost:3000", 
+        "http://localhost:5173"
+    ));
 
     configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
     configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept"));
