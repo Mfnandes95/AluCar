@@ -34,3 +34,10 @@ out/
 
 ### VS Code ###
 .vscode/
+../Desktop/FrontAlucar/
+../banco-dados/
+*.orig
+_BACKUP_*
+_BASE_*
+_LOCAL_*
+_REMOTE_*

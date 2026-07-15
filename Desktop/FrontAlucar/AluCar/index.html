@@ -251,6 +251,42 @@
   </div>
 </section>
 
+<!-- Seção de Reserva (Inserir após a Seção Banner Slider) -->
+<section id="reservar" class="py-16 bg-gray-50 border-t border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-bold text-gray-900">Reserve seu veículo</h2>
+      <p class="text-gray-600 mt-2">Escolha as datas para verificar a disponibilidade</p>
+    </div>
+
+    <!-- Filtro de Data -->
+   <!-- Trecho relevante do formulário de reserva, com as alterações -->
+
+    <div class="flex flex-wrap gap-4 justify-center items-end bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+      <div class="flex flex-col">
+        <label class="text-sm font-medium text-gray-700 mb-1">Data de Início</label>
+        <input type="date" id="data-inicio" class="border border-gray-300 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-blue-500">
+        <span id="data-inicio-confirmacao" class="text-xs text-blue-600 font-medium mt-1"></span>
+      </div>
+      <div class="flex flex-col">
+        <label class="text-sm font-medium text-gray-700 mb-1">Data de Devolução</label>
+        <input type="date" id="data-fim" class="border border-gray-300 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-blue-500">
+        <span id="data-fim-confirmacao" class="text-xs text-blue-600 font-medium mt-1"></span>
+      </div>
+      <button id="btn-buscar" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2.5 rounded-lg font-bold transition-all h-[46px]">
+        Buscar
+      </button>
+    </div>
+
+    <!-- Grid de Resultados -->
+    <div id="lista-carros-resultado" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+      <!-- Os cards de carros aparecerão aqui dinamicamente -->
+    </div>
+    
+  </div>
+</section>
+
 <!-- Seção Vantagens -->
 <section id="vantagens" class="bg-white py-16 lg:py-24 border-t border-gray-100">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

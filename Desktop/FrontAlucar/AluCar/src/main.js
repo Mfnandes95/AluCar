@@ -9,7 +9,15 @@ api.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
     
     // Lista de rotas que NÃO devem receber o token
-    const publicRoutes = ['/auth/login', '/usuarios'];
+    // Adicionadas as rotas de listagem de carros, que são públicas
+    // (o usuário pode navegar e ver os carros disponíveis sem estar logado;
+    // o login só é exigido no momento de criar a reserva).
+    const publicRoutes = [
+        '/auth/login',
+        '/usuarios',
+        '/carros-disponiveis',
+        '/carros/disponiveis'
+    ];
     
     // Verifica se a URL da requisição inclui alguma das rotas públicas
     const isPublic = publicRoutes.some(route => config.url.includes(route));
@@ -37,6 +45,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
     }
+
+    // Mostra ao usuário, sempre em pt-BR, a data que foi de fato registrada no campo,
+    // já que o input type="date" nativo exibe o formato conforme o idioma do
+    // navegador/SO (podendo ser MM/DD/AAAA), o que causa confusão para quem digita
+    // pensando em DD/MM/AAAA.
+    const atualizarConfirmacaoData = (inputId, spanId) => {
+        const input = document.getElementById(inputId);
+        const span = document.getElementById(spanId);
+        if (!input || !span) return;
+        if (!input.value) {
+            span.textContent = '';
+            return;
+        }
+        const data = new Date(input.value + 'T00:00:00');
+        span.textContent = `Selecionado: ${data.toLocaleDateString('pt-BR')}`;
+    };
+
+    document.getElementById('data-inicio')?.addEventListener('change', () =>
+        atualizarConfirmacaoData('data-inicio', 'data-inicio-confirmacao'));
+    document.getElementById('data-fim')?.addEventListener('change', () =>
+        atualizarConfirmacaoData('data-fim', 'data-fim-confirmacao'));
 
     const abrirModal = () => modal?.classList.remove('hidden');
     const fecharModal = () => modal?.classList.add('hidden');
@@ -186,3 +215,95 @@ async function carregarCarros() {
     console.error('Erro ao carregar carros:', error);
   }
 }
+
+// Exemplo de serviço de reserva
+const reservaService = {
+  async listarDisponiveis(inicio, fim) {
+    const response = await api.get(`/carros/disponiveis`, {
+      params: { inicio, fim }
+    });
+    return response.data;
+  },
+
+  async criarReserva(dadosReserva) {
+    return await api.post('/reservas', dadosReserva);
+  }
+};
+
+async function verificarDisponibilidade() {
+    const dataInicio = document.getElementById('data-inicio')?.value;
+    const dataFim = document.getElementById('data-fim')?.value;
+    const container = document.getElementById('lista-carros-resultado');
+
+    if (!dataInicio || !dataFim) {
+        alert("Por favor, selecione as datas de início e fim.");
+        return;
+    }
+
+    if (new Date(dataFim) <= new Date(dataInicio)) {
+        alert("A data de fim deve ser posterior à data de início.");
+        return;
+    }
+
+    try {
+        const carros = await reservaService.listarDisponiveis(dataInicio, dataFim);
+        renderizarListaCarros(carros, dataInicio, dataFim);
+    } catch (error) {
+        console.error(error);
+        alert("Erro ao buscar disponibilidade: " + (error.response?.data?.message || error.message));
+    }
+}
+
+function renderizarListaCarros(carros, inicio, fim) {
+    const container = document.getElementById('lista-carros-resultado');
+    if (!container) return;
+
+    if (carros.length === 0) {
+        container.innerHTML = '<p class="text-center col-span-3 text-gray-500">Nenhum carro disponível para este período.</p>';
+        return;
+    }
+
+    container.innerHTML = carros.map(carro => `
+        <div class="border rounded-lg p-4 shadow-sm hover:shadow-md transition">
+            <img src="${carro.imagemUrl || 'default-car.jpg'}" class="w-full h-40 object-cover rounded mb-2">
+            <h4 class="font-bold text-lg">${carro.modelo}</h4>
+            <p class="text-sm text-gray-600">Categoria: ${carro.categoria?.descricao || 'N/A'}</p>
+            <p class="text-blue-600 font-bold mt-2">R$ ${carro.valorDiaria}/dia</p>
+            <button onclick="window.realizarReserva(${carro.id}, '${inicio}', '${fim}')" 
+                    class="w-full mt-4 bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+                Reservar Agora
+            </button>
+        </div>
+    `).join('');
+}
+
+// ID da filial usada como padrão para retirada/devolução, enquanto não há
+// seleção de filial na tela de reserva.
+const FILIAL_PADRAO_ID = 1;
+
+// Exposta globalmente para o onclick do HTML
+window.realizarReserva = async (idVeiculo, inicio, fim) => {
+    if (!localStorage.getItem('token')) {
+        alert("Você precisa estar logado para realizar uma reserva!");
+        // Opcional: abrirModal();
+        return;
+    }
+
+    try {
+        await reservaService.criarReserva({
+            carroId: idVeiculo,
+            filialRetiradaId: FILIAL_PADRAO_ID,
+            filialDevolucaoId: FILIAL_PADRAO_ID,
+            dataInicioPrevista: inicio,
+            dataFimPrevista: fim
+        });
+        alert("Reserva efetuada com sucesso!");
+        verificarDisponibilidade(); // Atualiza a lista após reservar
+    } catch (error) {
+        console.error(error);
+        alert("Erro ao reservar: " + (error.response?.data?.message || "Verifique sua conexão."));
+    }
+};
+
+// Vinculação do botão de busca (garanta que o ID exista no HTML)
+document.getElementById('btn-buscar')?.addEventListener('click', verificarDisponibilidade);
