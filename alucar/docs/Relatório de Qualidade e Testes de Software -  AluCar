@@ -1,0 +1,27 @@
+```markdown
+# Relatório de Qualidade e Testes de Software - Projeto AluCar
+
+## 1. Objetivo
+
+Este documento apresenta as evidências de validação do sistema AluCar, assegurando a conformidade com as regras de negócio estabelecidas através de testes automatizados e análise de cobertura de código.
+
+## 2. Estratégia de Testes
+
+O projeto utiliza JUnit 5 para testes unitários, focando na lógica de serviços (Service Layer), e Spring Boot Test para testes de integração, garantindo o fluxo completo da requisição até a persistência no banco de dados.
+
+| ID | Descrição | Cenário | Resultado |
+| --- | --- | --- | --- |
+| CT-01 | Validação de Reserva | Datas início/fim inválidas | Passou |
+| CT-02 | Consulta de Veículos | Endpoint protegido | Passou |
+| CT-03 | Cadastro de Usuário | Validação de campos | Passou |
+
+## 3. Evidências de Execução
+
+Abaixo, a evidência do comando `./gradlew test` executado na raiz do projeto, confirmando que a suíte de testes foi processada com sucesso.
+
+```
+BUILD SUCCESSFUL in 809ms
+1 actionable task: 1 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.5.1/userguide/configuration_cache_enabling.html
+```
+```

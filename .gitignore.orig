@@ -1,0 +1,16 @@
+.gradle/
+<<<<<<< HEAD
+build/
+backend/.gradle/
+backend/build/
+.vscode/
+.idea/
+*.class
+*.log
+.DS_Store
+*.iml
+=======
+.vscode/
+build/
+*.log
+>>>>>>> 238d06fedd8ea9ad0cfb98c6d9ddcb9417c6c0b6
