@@ -31,7 +31,6 @@ public class UsuarioController {
 
     @PostMapping("/usuarios")
     @Operation(summary = "Criar novo usuário")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<UsuarioResponseDTO> criarUsuario(@RequestBody UsuarioResponseDTO usuarioDTO) {
         Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
         Usuario usuarioCriado = usuarioService.cadastroUsuario(usuario);

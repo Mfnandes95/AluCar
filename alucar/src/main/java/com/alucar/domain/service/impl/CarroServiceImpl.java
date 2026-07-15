@@ -8,8 +8,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Service
 public class CarroServiceImpl implements CarroService {
+
+    private static final String STATUS_DISPONIVEL = "disponivel";
 
     @Autowired
     private CarroRepository repository;
@@ -31,18 +36,17 @@ public class CarroServiceImpl implements CarroService {
 
     @Override
     public Carro getCarroDisponivelPorId(String id) {
-        // Exemplo de busca personalizada: verificar se o carro está disponível
-        return repository.findByIdAndDisponivelTrue(Long.valueOf(id));
+        return repository.findByIdAndStatus(Long.valueOf(id), STATUS_DISPONIVEL);
     }
 
     @Override
     public Carro getCarroDisponivelPorPlaca(String placa) {
-        return repository.findByPlacaAndDisponivelTrue(placa);
+        return repository.findByPlacaAndStatus(placa, STATUS_DISPONIVEL);
     }
 
     @Override
     public Page<Carro> getCarrosDisponiveis(Pageable pageable) {
-        return repository.findByDisponivelTrue(pageable);
+        return repository.findByStatus(STATUS_DISPONIVEL, pageable);
     }
 
     @Override
@@ -52,7 +56,6 @@ public class CarroServiceImpl implements CarroService {
 
     @Override
     public void atualizarCarro(String id, Carro carro) {
-        // Verifica se existe, depois salva as alterações
         repository.findById(Long.valueOf(id)).ifPresent(c -> {
             carro.setId(Long.valueOf(id));
             repository.save(carro);
@@ -62,5 +65,10 @@ public class CarroServiceImpl implements CarroService {
     @Override
     public void excluirCarro(String id) {
         repository.deleteById(Long.valueOf(id));
+    }
+
+    @Override
+    public List<Carro> getCarrosDisponiveisNoPeriodo(LocalDate inicio, LocalDate fim) {
+        return repository.findDisponiveisNoPeriodo(inicio, fim);
     }
 }

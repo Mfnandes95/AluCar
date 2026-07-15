@@ -30,6 +30,9 @@ public class Usuario {
     // Construtor vazio para o JPA
     public Usuario() {}
 
+    @Column(nullable = false)
+    private String role = "CLIENTE"; // CLIENTE ou ADMIN
+
     // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -54,4 +57,7 @@ public class Usuario {
 
     public String getCnh() { return cnh; }
     public void setCnh(String cnh) { this.cnh = cnh; }
+
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
 }

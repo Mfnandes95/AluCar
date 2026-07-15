@@ -8,23 +8,21 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
-import java.util.List;
 import java.time.LocalDate;
+import java.util.List;
 
 @Repository
 public interface CarroRepository extends JpaRepository<Carro, Long> {
 
     // --- Métodos de Busca Simples (Spring Data JPA) ---
     Carro findByPlaca(String placa);
-    Carro findByPlacaAndDisponivelTrue(String placa);
-    Carro findByIdAndDisponivelTrue(Long id);
-    Page<Carro> findByDisponivelTrue(Pageable pageable);
+    Carro findByPlacaAndStatus(String placa, String status);
+    Carro findByIdAndStatus(Long id, String status);
+    Page<Carro> findByStatus(String status, Pageable pageable);
 
-    // --- Consulta Personalizada (Sua lógica de disponibilidade) ---
-    @Query("SELECT c FROM Carro c WHERE c.id NOT IN (" +
-       "SELECT r.carroId FROM Reserva r " +
-       "WHERE (r.dataReserva <= :fim AND r.dataDevolucao >= :inicio) " +
-       "AND r.status NOT IN ('FINALIZADA', 'CANCELADA'))")
-       List<Carro> findCarrosDisponiveis(@Param("inicio") LocalDate inicio, @Param("fim") LocalDate fim);
+    // --- Consulta Personalizada (Sua lógica de disponibilidade por período) ---
+    @Query("SELECT c FROM Carro c WHERE c.status = 'disponivel' AND c.id NOT IN (" +
+           "SELECT r.carro.id FROM Reserva r WHERE r.status = 'ativa' " +
+           "AND r.dataInicioPrevista <= :fim AND r.dataFimPrevista >= :inicio)")
+    List<Carro> findDisponiveisNoPeriodo(@Param("inicio") LocalDate inicio, @Param("fim") LocalDate fim);
 }

@@ -2,47 +2,62 @@ package com.alucar.domain.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "reservas")
+@Table(name = "reserva")
 public class Reserva {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_reserva")
+    private Long idReserva;
 
-    // Usamos LocalDate para facilitar manipulações de calendário
-    private LocalDate dataReserva;
-    private LocalDate dataDevolucao;
-    
-    // Status pode ser um Enum no futuro, por enquanto mantemos String
-    private String status;
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private Usuario usuario;
 
-    // Relacionamento com o usuário (Assumindo que você terá uma classe Usuario)
-    // Se ainda não tiver, podemos manter como Long para guardar apenas o ID
-    private Long usuarioId;
+    @ManyToOne
+    @JoinColumn(name = "id_veiculo", nullable = false) // Ajustado de id_carro para id_veiculo
+    private Carro carro;
+  
+    @ManyToOne
+    @JoinColumn(name = "id_filial_retirada", nullable = false)
+    private Filial filialRetirada;
 
-    private Long carroId; // Adicionado para referenciar o carro reservado
+    @ManyToOne
+    @JoinColumn(name = "id_filial_devolucao", nullable = false)
+    private Filial filialDevolucao;
 
-    // Construtor padrão necessário para o JPA
+    @Column(name = "data_reserva")
+    private LocalDateTime dataReserva = LocalDateTime.now();
+
+    @Column(name = "data_inicio_prevista", nullable = false)
+    private LocalDate dataInicioPrevista;
+
+    @Column(name = "data_fim_prevista", nullable = false)
+    private LocalDate dataFimPrevista;
+
+    @Column(nullable = false)
+    private String status = "ativa";
+
     public Reserva() {}
 
-    // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public LocalDate getDataReserva() { return dataReserva; }
-    public void setDataReserva(LocalDate dataReserva) { this.dataReserva = dataReserva; }
-
-    public LocalDate getDataDevolucao() { return dataDevolucao; }
-    public void setDataDevolucao(LocalDate dataDevolucao) { this.dataDevolucao = dataDevolucao; }
-
+    public Long getIdReserva() { return idReserva; }
+    public void setIdReserva(Long idReserva) { this.idReserva = idReserva; }
+    public Usuario getUsuario() { return usuario; }
+    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
+    public Carro getCarro() { return carro; }
+    public void setCarro(Carro carro) { this.carro = carro; }
+    public Filial getFilialRetirada() { return filialRetirada; }
+    public void setFilialRetirada(Filial filialRetirada) { this.filialRetirada = filialRetirada; }
+    public Filial getFilialDevolucao() { return filialDevolucao; }
+    public void setFilialDevolucao(Filial filialDevolucao) { this.filialDevolucao = filialDevolucao; }
+    public LocalDateTime getDataReserva() { return dataReserva; }
+    public void setDataReserva(LocalDateTime dataReserva) { this.dataReserva = dataReserva; }
+    public LocalDate getDataInicioPrevista() { return dataInicioPrevista; }
+    public void setDataInicioPrevista(LocalDate dataInicioPrevista) { this.dataInicioPrevista = dataInicioPrevista; }
+    public LocalDate getDataFimPrevista() { return dataFimPrevista; }
+    public void setDataFimPrevista(LocalDate dataFimPrevista) { this.dataFimPrevista = dataFimPrevista; }
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
-
-    public Long getUsuarioId() { return usuarioId; }
-    public void setUsuarioId(Long usuarioId) { this.usuarioId = usuarioId; }
-
-    public Long getCarroId() { return carroId; }
-    public void setCarroId(Long carroId) { this.carroId = carroId; }
 }

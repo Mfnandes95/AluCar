@@ -3,6 +3,7 @@ package com.alucar.domain.service.impl;
 import com.alucar.domain.model.Usuario;
 import com.alucar.domain.repository.UsuarioRepository;
 import com.alucar.domain.service.UsuarioService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -14,15 +15,21 @@ import java.util.Optional;
 public class UsuarioServiceImpl implements UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UsuarioServiceImpl(UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-    }
+    public UsuarioServiceImpl(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
+    this.usuarioRepository = usuarioRepository;
+    this.passwordEncoder = passwordEncoder;
+}
 
     @Override
     public Usuario cadastroUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
+    if (usuario.getRole() == null || usuario.getRole().isBlank()) {
+        usuario.setRole("CLIENTE");
     }
+    return usuarioRepository.save(usuario);
+}
 
     @Override
     public Usuario buscarUsuarioPorId(Long id) {

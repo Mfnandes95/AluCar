@@ -16,13 +16,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.alucar.application.dto.response.CarroResponseDTO;
 import com.alucar.application.mapper.CarroMapper;
 import com.alucar.domain.model.Carro;
 import com.alucar.domain.service.CarroService;
 
+import java.time.LocalDate;
+
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class CarroController {
     
     private final CarroService carroService;
@@ -55,7 +59,6 @@ public class CarroController {
     }
 
     @GetMapping("/carros-disponiveis")
-    @CrossOrigin(origins = "http://localhost:5173")
     public ResponseEntity<List<CarroResponseDTO>> listarCarrosDisponiveis(
             @RequestParam int pagina, 
             @RequestParam int tamanho) {
@@ -65,5 +68,17 @@ public class CarroController {
                 .map(carroMapper::toResponseDTO)
                 .collect(Collectors.toList());
         return ResponseEntity.ok(carrosDisponiveisDTO);
+    }
+
+    @GetMapping("/carros/disponiveis")
+    public ResponseEntity<List<CarroResponseDTO>> listarDisponiveisPorPeriodo(
+        @RequestParam LocalDate inicio,
+        @RequestParam LocalDate fim) {
+
+        List<Carro> carrosDisponiveis = carroService.getCarrosDisponiveisNoPeriodo(inicio, fim);
+        List<CarroResponseDTO> dto = carrosDisponiveis.stream()
+                .map(carroMapper::toResponseDTO)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(dto);
     }
 }
